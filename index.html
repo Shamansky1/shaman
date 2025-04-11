@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Monitoring Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">System</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="system-info">
+            <h2 class="section-title">System Information</h2>
+            <ul class="system-info-list">
+                <li class="system-info-item">
+                    <span class="system-info-label">CPU Usage:</span>
+                    <span id="cpu-usage" class="system-info-value">0%</span>
+                </li>
+                <li class="system-info-item">
+                    <span class="system-info-label">Memory Usage:</span>
+                    <span id="ram-usage" class="system-info-value">0%</span>
+                </li>
+                <li class="system-info-item">
+                    <span class="system-info-label">Disk Usage:</span>
+                    <span id="disk-usage" class="system-info-value">0%</span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="performance-graphs">
+            <h2 class="section-title">Performance Monitoring</h2>
+            <div class="graph-container">
+                <canvas id="cpuChart"></canvas>
+                <canvas id="memoryChart"></canvas>
+                <canvas id="networkChart"></canvas>
+            </div>
+        </section>
+
+        <button class="fab" id="optimize-system">
+            <i class="fas fa-magic"></i>
+        </button>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

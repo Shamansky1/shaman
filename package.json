@@ -1,0 +1,17 @@
+{
+    "name": "system-monitoring-dashboard",
+    "version": "1.0.0",
+    "description": "System Monitoring Dashboard",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "start:cli": "node cli-monitor.js"
+    },
+    "dependencies": {
+        "systeminformation": "^5.18.15",
+        "chart.js": "^4.0.0"
+    },
+    "devDependencies": {
+        "electron": "^24.3.0"
+    }
+}
