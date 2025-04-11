@@ -1,0 +1,134 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.network-info, .process-info {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1em;
+    border-radius: 8px;
+    margin: 1em 0;
+    width: 100%;
+    max-width: 600px;
+}
+
+.network-info-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.network-info-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5em;
+    padding: 0.5em;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.process-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+}
+
+.process-table th,
+.process-table td {
+    padding: 0.5em;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.process-table tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.system-info-temp {
+    margin-left: 1em;
+    color: #ff7700;
+}
+
+.performance-graphs {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1em;
+    border-radius: 8px;
+    margin: 1em 0;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.graph-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1em;
+    margin-top: 1em;
+}
+
+.graph-container canvas {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    padding: 0.5em;
+}
+
+.latency-info, .disk-io {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1em;
+    border-radius: 8px;
+    margin: 1em 0;
+    width: 100%;
+    max-width: 600px;
+}
+
+.latency-info-list, .disk-io-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.latency-info-item, .disk-io-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5em;
+    padding: 0.5em;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.gpu-info, .power-info, .driver-info {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1em;
+    border-radius: 8px;
+    margin: 1em 0;
+    width: 100%;
+    max-width: 600px;
+    backdrop-filter: blur(10px);
+}
+
+.heatmap-container {
+    height: 200px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    margin-top: 1em;
+}
+
+.gpu-info-list, .power-info-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.gpu-info-item, .power-info-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5em;
+    padding: 0.5em;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.gpu-info-item:hover, .power-info-item:hover {
+    background: rgba(0, 0, 0, 0.2);
+}

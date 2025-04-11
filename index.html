@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Monitoring Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <audio id="background-music" loop>
+        <source src="background-music.mp3" type="audio/mp3">
+    </audio>
+    <div class="container">
+        <header>
+            <h1>System Monitoring Dashboard</h1>
+        </header>
+        <main>
+            <section id="live-data">
+                <h2>Live Data</h2>
+                <div id="data-display">
+                    <p>Loading data...</p>
+                </div>
+            </section>
+
+            <!-- System information section -->
+            <section class="system-info">
+                <h2 class="section-title">System Information</h2>
+                <ul class="system-info-list">
+                    <li class="system-info-item">
+                        <span class="system-info-label">CPU Usage:</span>
+                        <span id="cpu-usage" class="system-info-value">0%</span>
+                        <span id="cpu-temp" class="system-info-temp"></span>
+                    </li>
+                    <li class="system-info-item">
+                        <span class="system-info-label">Memory Usage:</span>
+                        <span id="memory-usage" class="system-info-value">0%</span>
+                    </li>
+                    <li class="system-info-item">
+                        <span class="system-info-label">Disk Usage:</span>
+                        <span id="disk-usage" class="system-info-value">0%</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Network section -->
+            <section class="network-info">
+                <h2 class="section-title">Network</h2>
+                <ul class="network-info-list">
+                    <li class="network-info-item">
+                        <span class="network-info-label">Upload:</span>
+                        <span id="network-upload" class="network-info-value">0 KB/s</span>
+                    </li>
+                    <li class="network-info-item">
+                        <span class="network-info-label">Download:</span>
+                        <span id="network-download" class="network-info-value">0 KB/s</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Process section -->
+            <section class="process-info">
+                <h2 class="section-title">Top Processes</h2>
+                <table class="process-table">
+                    <thead>
+                        <tr>
+                            <th>Process</th>
+                            <th>CPU %</th>
+                            <th>Memory %</th>
+                        </tr>
+                    </thead>
+                    <tbody id="process-list">
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="controls">
+                <h2>Controls</h2>
+                <button id="start-button">Start</button>
+                <button id="stop-button">Stop</button>
+            </section>
+        </main>
+
+        <!-- Performance Graphs -->
+        <section class="performance-graphs">
+            <h2 class="section-title">Real-time Performance</h2>
+            <div class="graph-container">
+                <canvas id="cpuChart"></canvas>
+                <canvas id="memoryChart"></canvas>
+                <canvas id="networkChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Latency Monitoring -->
+        <section class="latency-info">
+            <h2 class="section-title">System Latency</h2>
+            <ul class="latency-info-list">
+                <li class="latency-info-item">
+                    <span class="latency-info-label">System Latency:</span>
+                    <span id="system-latency" class="latency-info-value">0ms</span>
+                </li>
+                <li class="latency-info-item">
+                    <span class="latency-info-label">DPC Latency:</span>
+                    <span id="dpc-latency" class="latency-info-value">0ms</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Disk I/O -->
+        <section class="disk-io">
+            <h2 class="section-title">Disk I/O</h2>
+            <ul class="disk-io-list">
+                <li class="disk-io-item">
+                    <span class="disk-io-label">Read Speed:</span>
+                    <span id="disk-read" class="disk-io-value">0 MB/s</span>
+                </li>
+                <li class="disk-io-item">
+                    <span class="disk-io-label">Write Speed:</span>
+                    <span id="disk-write" class="disk-io-value">0 MB/s</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- GPU Monitoring -->
+        <section class="gpu-info">
+            <h2 class="section-title">GPU Information</h2>
+            <ul class="gpu-info-list">
+                <li class="gpu-info-item">
+                    <span class="gpu-info-label">GPU Usage:</span>
+                    <span id="gpu-usage" class="gpu-info-value">0%</span>
+                </li>
+                <li class="gpu-info-item">
+                    <span class="gpu-info-label">VRAM Usage:</span>
+                    <span id="vram-usage" class="gpu-info-value">0%</span>
+                </li>
+                <li class="gpu-info-item">
+                    <span class="gpu-info-label">GPU Temperature:</span>
+                    <span id="gpu-temp" class="gpu-info-value">0°C</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Power Monitoring -->
+        <section class="power-info">
+            <h2 class="section-title">Power Consumption</h2>
+            <canvas id="powerChart"></canvas>
+            <ul class="power-info-list">
+                <li class="power-info-item">
+                    <span class="power-info-label">CPU Power:</span>
+                    <span id="cpu-power" class="power-info-value">0W</span>
+                </li>
+                <li class="power-info-item">
+                    <span class="power-info-label">GPU Power:</span>
+                    <span id="gpu-power" class="power-info-value">0W</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Driver Latency -->
+        <section class="driver-info">
+            <h2 class="section-title">Driver Latency</h2>
+            <div id="driver-heatmap" class="heatmap-container"></div>
+        </section>
+
+        <footer>
+            <p>&copy; 2023 System Monitoring Dashboard</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+directories:
+  output: dist
+  buildResources: build
+appId: com.system.monitor
+productName: System Monitor
+win:
+  target:
+    - nsis
+  icon: assets/icon.ico
+nsis:
+  oneClick: false
+  perMachine: true
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  runAfterFinish: true
+  packElevateHelper: true
+  installerIcon: assets/icon.ico
+  uninstallerIcon: assets/icon.ico
+  license: LICENSE
+  allowElevation: true
+asar: true
+asarUnpack:
+  - node_modules/systeminformation
+files: []
+electronVersion: 24.8.8
